@@ -6,9 +6,44 @@ Plik śledzący wszystkie workflowy załadowane na instancję n8n na Hostingerze
 
 ## Szablony
 
-| # | Nazwa szablonu | ID w n8n | Cel / korzyść | Wymagane kredencjały | Kolejne kroki konfiguracji | Data dodania |
+| # | Nazwa workflow | ID w n8n | Trigger | Węzły | Wymagane kredencjały | Data dodania |
 |---|---|---|---|---|---|---|
-| 1 | **Query GA4 data with Google Gemini AI in a Slack channel** | `b6dM5vmG0oZ0z8sh` | Zadawanie pytań o dane GA4 w języku naturalnym przez Slacka. AI agent tłumaczy pytania na metryki GA4 i odpowiada bezpośrednio w wątku. | Slack API, Google Analytics OAuth2, Google Gemini (AI Studio) | 1. Skonfiguruj kredencjały: Slack (bot token), Google Analytics OAuth2, Google Gemini API<br>2. Ustaw kanał Slack w `Slack Trigger` (channelId)<br>3. Ustaw Property ID GA4 w `Get a report in Google Analytics`<br>4. Aktywuj workflow | 2026-05-07 |
+| 1 | **Sieć Agentów AI (Gemini)** | `5OnOB4FwZMK8uMNl` | Chat Trigger | 11 | Google Gemini, Gmail, Google Calendar, Tavily | 2026-05-07 |
+| 2 | **Sieć Agentów AI (Deepseek)** | `Sus7cpF3VSkhwbgl` | Chat Trigger | 11 | DeepSeek, Gmail (GCP), Google Calendar (GCP), Tavily | 2026-05-06 |
+| 3 | **Query GA4 data with Google Gemini AI in a Slack channel** | `b6dM5vmG0oZ0z8sh` | Slack Trigger | 8 | Slack, Google Analytics OAuth2, Google Gemini (AI Studio) | 2026-05-07 |
+| 4 | **My workflow** (pusty) | `gpvpszunXxwjHvwl` | brak | 0 | brak | 2026-05-08 |
+
+---
+
+## Szczegóły
+
+### 1. Sieć Agentów AI (Gemini)
+- **Źródło:** Zbudowany od podstaw
+- **Struktura:** Chat → Agent Conductor → Calendar/Mail/Research Agent
+- **Model główny:** Google Gemini Chat Model (brak temperatury)
+- **Modele sub-agentów:** Google Gemini Chat Model1 (temp: 0)
+- **Narzędzia:** Google Calendar, Gmail, Tavily
+- **Pamięć:** Buffer Window (10 kontekstów)
+
+### 2. Sieć Agentów AI (Deepseek)
+- **Źródło:** Zbudowany od podstaw
+- **Struktura:** Chat → Agent Conductor → Calendar/Mail/Research Agent
+- **Model główny:** DeepSeek (`deepseek-chat`, temp: 0.7)
+- **Modele sub-agentów:** DeepSeek (`deepseek-chat`, temp: 0.7)
+- **Narzędzia:** Google Calendar, Gmail, Tavily
+- **Pamięć:** Buffer Window (10 kontekstów)
+- **Uwaga:** Zmieniono model z `deepseek-v4-flash` na `deepseek-chat`, podniesiono temperaturę z 0 na 0.7, usunięto maxTokens: 500
+
+### 3. Query GA4 data with Google Gemini AI in a Slack channel
+- **Źródło:** https://n8n.io/workflows/13038-query-ga4-data-with-google-gemini-ai-in-a-slack-channel/
+- **Autor:** scalo-labs
+- **Struktura:** Slack Trigger → Edit Fields → AI Agent → Slack reply
+- **Model:** Google Gemini 2.5 Pro
+- **Narzędzie:** Google Analytics 4 (RunReport)
+- **Pamięć:** Buffer Window (10 kontekstów, klucz własny)
+
+### 4. My workflow (pusty)
+- Pusty workflow gotowy do wypełnienia
 
 ---
 
@@ -16,9 +51,5 @@ Plik śledzący wszystkie workflowy załadowane na instancję n8n na Hostingerze
 
 | Data | Opis |
 |---|---|
+| 2026-05-08 | Rozszerzono o wszystkie 4 workflowy. Dodano szczegóły konfiguracji. |
 | 2026-05-07 | Utworzono plik. Dodano szablon #1: Query GA4 with Gemini in Slack |
-
----
-
-**Źródło szablonu:** https://n8n.io/workflows/13038-query-ga4-data-with-google-gemini-ai-in-a-slack-channel/
-**Autor:** scalo-labs
