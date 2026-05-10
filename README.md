@@ -1,4 +1,4 @@
-# Projekt: Integracja Antigravity z n8n przez MCP
+# Projekt: Integracja Antigravity z n8n przez n8n-MCP-unofficial
 
 Ten projekt służy jako dedykowane środowisko do zarządzania, tworzenia i edytowania przepływów pracy (workflows) w instancji **n8n** bezpośrednio z poziomu czatu **Antigravity** (IDE).
 
@@ -10,7 +10,7 @@ Ten projekt służy jako dedykowane środowisko do zarządzania, tworzenia i edy
 Przed rozpoczęciem pracy z n8n:
 
 1. Przeczytaj cały plik AGENTS.md — to są główne instrukcje jak budować workflow.
-2. Znajdujesz się w projekcie n8n-MCP — instancja n8n na Hostinger: https://n8n.srv1645572.hstgr.cloud
+2. Znajdujesz się w projekcie n8n-MCP-unofficial — instancja n8n na Hostinger: https://n8n.srv1645572.hstgr.cloud
 3. W .opencode/skills/ masz 7 lokalnych skilli n8n — używaj ich gdy potrzebujesz wiedzy o:
    - składni wyrażeń n8n (n8n-expression-syntax)
    - używaniu narzędzi MCP (n8n-mcp-tools-expert)
@@ -41,7 +41,7 @@ Przed rozpoczęciem pracy z n8n:
 ## Co zostało skonfigurowane (Krok po kroku)
 
 1. **Izolowane środowisko Node.js**: 
-   Zamiast instalować pakiety globalnie, zainicjowaliśmy lokalny projekt (`npm init -y`) w folderze `/Users/p/Documents/dev/n8n-MCP`.
+   Zamiast instalować pakiety globalnie, zainicjowaliśmy lokalny projekt (`npm init -y`) w folderze `/Users/p/Documents/dev/n8n-MCP-unofficial`.
    
 2. **Instalacja serwera n8n-mcp**: 
    Pobraliśmy paczkę `n8n-mcp` poleceniem `npm install n8n-mcp`. Pozwala to na uniknięcie konfliktów z innymi narzędziami w systemie operacyjnym (podobnie jak `venv` w Pythonie).
@@ -71,6 +71,6 @@ Przed rozpoczęciem pracy z n8n:
 
 Kiedy w przyszłości będziesz chciał coś zmienić lub zbudować w n8n, Twój proces pracy powinien wyglądać następująco:
 
-1. **Otwórz ten projekt w IDE**: Uruchom środowisko w folderze `/Users/p/Documents/dev/n8n-MCP`. (Otwierając ten folder dajesz mi dostęp do pliku `AGENTS.md`, dzięki któremu "pamiętam" jak poprawnie budować flow w n8n).
+1. **Otwórz ten projekt w IDE**: Uruchom środowisko w folderze `/Users/p/Documents/dev/n8n-MCP-unofficial`. (Otwierając ten folder dajesz mi dostęp do pliku `AGENTS.md`, dzięki któremu "pamiętam" jak poprawnie budować flow w n8n).
 2. **Zacznij rozmowę**: Po prostu opisz, jaki przepływ pracy chcesz stworzyć. Na przykład: *"Utwórz webhook, który po odebraniu danych wyśle wiadomość na Slacka."*
 3. **Moje działania**: Wykorzystam narzędzia n8n, przeszukam bazę szablonów, skonfiguruję węzły i wdrożę gotowy przepływ bezpośrednio na Twój serwer n8n w Hostingerze!
